@@ -1,0 +1,22 @@
+{
+    "name": "yousef/payment-gateway",
+    "description": "This package makes everything is simple, this payment method support (Visa, MasterCard)",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Yousef\\PaymentGateway\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yousef.dev20",
+            "email": "yousef.dev20@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "~7.4|^8.0",
+        "illuminate/support": "^6.0|^7.0|^8.0|^8.77"
+    }
+}
