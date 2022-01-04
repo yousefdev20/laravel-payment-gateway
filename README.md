@@ -11,7 +11,7 @@ We made this package to decouple response object
 Install via composer
 
 ```shell
-composer require yousef/responsible
+composer require yousef/PaymentGateway
 ```
 
 ## Configuration

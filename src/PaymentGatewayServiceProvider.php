@@ -23,7 +23,7 @@ class PaymentGatewayServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../../config/payment-gateway.php' => config_path('payment-gateway.php')
+            __DIR__.'/../config/payment-gateway.php' => config_path('payment-gateway.php')
         ]);
     }
 

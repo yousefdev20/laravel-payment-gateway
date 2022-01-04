@@ -13,7 +13,7 @@ class Generator
     {
         return config('payment-gateway.gateway_url', '') .
             '/version/' .
-            config('payment-gateway.gateway_url', 'version');
+            config('payment-gateway.version', '61');
     }
 
 }
