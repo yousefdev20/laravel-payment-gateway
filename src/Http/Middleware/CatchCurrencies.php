@@ -18,7 +18,8 @@ class CatchCurrencies
      */
     public function handle($request, Closure $next)
     {
-        switch ($request->currency ?? 'KWD') {
+
+        switch (strtoupper($request->currency ?? 'KWD')) {
 
             case 'KWD':
                 config([
@@ -53,5 +54,4 @@ class CatchCurrencies
         }
         return $next($request);
     }
-
 }
