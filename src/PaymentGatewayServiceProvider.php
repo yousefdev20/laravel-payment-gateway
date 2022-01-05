@@ -2,8 +2,10 @@
 
 namespace Yousef\PaymentGateway;
 
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Yousef\PaymentGateway\Gateways\Payment;
+use Yousef\PaymentGateway\Http\Middleware\CatchCurrencies;
 use Yousef\PaymentGateway\UrlGenerator\Generator;
 
 class PaymentGatewayServiceProvider extends ServiceProvider
@@ -22,6 +24,9 @@ class PaymentGatewayServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        $router = $this->app->make(Router::class);
+        $router->aliasMiddleware('currency', CatchCurrencies::class);
+
         $this->publishes([
             __DIR__.'/../config/payment-gateway.php' => config_path('payment-gateway.php')
         ]);
