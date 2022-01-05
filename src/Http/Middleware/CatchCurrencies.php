@@ -22,44 +22,32 @@ class CatchCurrencies
 
             case 'KWD':
                 config([
-                    'payment-gateway.username' => '10',
-                    'payment-gateway.merchant_id' => '',
-                    'payment-gateway.password' => '',
+                    'payment-gateway' => config('multi-currency-gateway.KWD')
                 ]);
                 break;
             case 'AED':
                 config([
-                    'payment-gateway.username' => '2',
-                    'payment-gateway.merchant_id' => '',
-                    'payment-gateway.password' => '',
+                    'payment-gateway' => config('multi-currency-gateway.AED')
                 ]);
                 break;
             case 'BHD':
                 config([
-                    'payment-gateway.username' => '3',
-                    'payment-gateway.merchant_id' => '',
-                    'payment-gateway.password' => '',
+                    'payment-gateway' => config('multi-currency-gateway.BHD')
                 ]);
                 break;
             case 'QAR':
                 config([
-                    'payment-gateway.username' => '4',
-                    'payment-gateway.merchant_id' => '',
-                    'payment-gateway.password' => '',
+                    'payment-gateway' => config('multi-currency-gateway.QAR')
                 ]);
                 break;
             case 'JOD':
                 config([
-                    'payment-gateway.username' => '5',
-                    'payment-gateway.merchant_id' => '',
-                    'payment-gateway.password' => '',
+                    'payment-gateway' => config('multi-currency-gateway.JOD')
                 ]);
                 break;
             default:
                 config([
-                    'payment-gateway.username' => '1',
-                    'payment-gateway.merchant_id' => '',
-                    'payment-gateway.password' => '',
+                    ' payment-gateway' => config( 'multi-currency-gateway.KWD' )
                 ]);
                 break;
         }

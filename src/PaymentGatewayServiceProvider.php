@@ -28,7 +28,8 @@ class PaymentGatewayServiceProvider extends ServiceProvider
         $router->aliasMiddleware('currency', CatchCurrencies::class);
 
         $this->publishes([
-            __DIR__.'/../config/payment-gateway.php' => config_path('payment-gateway.php')
+            __DIR__.'/../config/payment-gateway.php' => config_path('payment-gateway.php'),
+            __DIR__.'/../config/multi-currency-gateway.php' => config_path('multi-currency-gateway.php')
         ]);
     }
 
