@@ -17,7 +17,7 @@ class Payment implements PaymentInterface
             "merchant" => config('payment-gateway.merchant_id'),
             "apiPassword" => config('payment-gateway.password'),
             "apiUsername" => config('payment-gateway.username'),
-            "apiOperation" => config('payment-gateway.options.new_session')
+            "apiOperation" => config('payment-gateway.operations.retrieve_order')
         ];
 
         $payload_str = http_build_query($payload);
@@ -56,7 +56,7 @@ class Payment implements PaymentInterface
             "merchant" => config('payment-gateway.merchant_id'),
             "apiPassword" => config('payment-gateway.password'),
             "apiUsername" => config('payment-gateway.username'),
-            "apiOperation" => config('payment-gateway.options.new_session')
+            "apiOperation" => config('payment-gateway.operations.new_session')
         ];
 
         $payload_str = http_build_query($payload);
