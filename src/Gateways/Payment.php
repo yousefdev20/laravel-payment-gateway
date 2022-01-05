@@ -42,9 +42,8 @@ class Payment implements PaymentInterface
      * @param int $orderId
      * @param string $currency
      * @param string $operationType
-     * @return mixed
-     */
-    public function createSession(float $amount = 0, int $orderId = 0, string $currency = 'USD', string $operationType = 'PURCHASE'): mixed
+     **/
+    public function createSession(float $amount = 0, int $orderId = 0, string $currency = 'USD', string $operationType = 'PURCHASE')
     {
         $request = curl_init();
 
