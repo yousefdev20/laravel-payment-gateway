@@ -2,7 +2,9 @@
 
 namespace Yousef\PaymentGateway\Exceptions;
 
-class NotCaptured
+use Exception;
+
+class NotCaptured extends Exception
 {
 
 }
