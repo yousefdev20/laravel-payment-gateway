@@ -2,7 +2,9 @@
 
 namespace Yousef\PaymentGateway\Exceptions;
 
-class InvalidAmount
+use Exception;
+
+class InvalidAmount extends Exception
 {
 
 }
