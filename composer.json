@@ -3,6 +3,13 @@
     "description": "This package makes everything is simple, this payment method support (Visa, MasterCard)",
     "type": "library",
     "license": "MIT",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Yousef\\PaymentGateway\\PaymentGatewayServiceProvider"
+            ]
+        }
+    },
     "autoload": {
         "psr-4": {
             "Yousef\\PaymentGateway\\": "src/"
