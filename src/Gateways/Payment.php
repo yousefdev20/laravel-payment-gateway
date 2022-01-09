@@ -32,9 +32,7 @@ class Payment implements PaymentInterface
 
         curl_setopt($request, CURLOPT_RETURNTRANSFER, TRUE);
 
-        parse_str(curl_exec($request), $response);
-
-        return $response;
+        return $this->responseHandler(curl_exec($request));
     }
 
     /**
@@ -71,12 +69,20 @@ class Payment implements PaymentInterface
 
         curl_setopt($request, CURLOPT_RETURNTRANSFER, TRUE);
 
-        parse_str(curl_exec($request), $response);
-
-        return $response;
+        return $this->responseHandler(curl_exec($request));
     }
 
-    private function handler()
+    private function responseHandler(string $string): array
+    {
+        $pairArray = explode("&", $string);
+        foreach ($pairArray ?? [] as $pair) {
+            $param = explode("=", $pair);
+            $array[urldecode($param[0])] = urldecode($param[1]);
+        }
+        return $array ?? [];
+    }
+
+    private function requestHandler()
     {
 
     }
