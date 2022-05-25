@@ -3,6 +3,7 @@
 namespace Yousef\PaymentGateway\Http\Middleware;
 
 use Closure;
+use Yousef\PaymentGateway\Exceptions\CurrencyNotFound;
 
 class CatchCurrencies
 {
@@ -15,42 +16,12 @@ class CatchCurrencies
      * @param $request
      * @param Closure $next
      * @return mixed
+     * @throws CurrencyNotFound
      */
     public function handle($request, Closure $next)
     {
-
-        switch (strtoupper($request->currency ?? 'KWD')) {
-
-            case 'KWD':
-                config([
-                    'payment-gateway' => config('multi-currency-gateway.KWD')
-                ]);
-                break;
-            case 'AED':
-                config([
-                    'payment-gateway' => config('multi-currency-gateway.AED')
-                ]);
-                break;
-            case 'BHD':
-                config([
-                    'payment-gateway' => config('multi-currency-gateway.BHD')
-                ]);
-                break;
-            case 'QAR':
-                config([
-                    'payment-gateway' => config('multi-currency-gateway.QAR')
-                ]);
-                break;
-            case 'JOD':
-                config([
-                    'payment-gateway' => config('multi-currency-gateway.JOD')
-                ]);
-                break;
-            default:
-                config([
-                    ' payment-gateway' => config( 'multi-currency-gateway.KWD' )
-                ]);
-                break;
+        if (!config('multi-currency-gateway')[$request->currency] ?? false) {
+            throw new CurrencyNotFound();
         }
         return $next($request);
     }

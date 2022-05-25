@@ -14,7 +14,7 @@ composer require yousef/PaymentGateway
 
 ## Configuration
 
-Add the `ResponseAbstractFactoryServiceProviders` class in your `config/app.php` file.
+Add the `PaymentGatewayServiceProvider` class in your `config/app.php` file.
 
 ```php
 <?php
@@ -85,16 +85,16 @@ Add own configuration in .env file the DEFAULT_CURRENCY is USD
 ```php
 VERSION=""
 GATEWAY_URL=""
-MERCHANT_EMAIL=""
-MERCHANT_USERNAME=""
-MERCHANT_PASSWORD=""
 
-// Multi currency
+MERCHANT_ID_USD=""
+MERCHANT_EMAIL_USD=""
+MERCHANT_USERNAME_USD=""
+MERCHANT_PASSWORD_USD=""
+
+MERCHANT_ID_KWD=""
 MERCHANT_EMAIL_KWD=""
 MERCHANT_USERNAME_KWD=""
 MERCHANT_PASSWORD_KWD=""
-
-DEFAULT_CURRENCY=""
 ```
 ## Getting Help
 
