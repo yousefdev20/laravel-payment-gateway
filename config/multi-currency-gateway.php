@@ -2,6 +2,23 @@
 
 return [
 
+    'USD' => [
+        'certificate_verify_peer' => env('CERTIFICATE_VERIFY_PEER', false),
+        'certificate_verify_host' => env('CERTIFICATE_VERIFY_HOST', 0),
+        'gateway_url' => env('GATEWAY_URL', ''),
+        'username'=> env('MERCHANT_USERNAME_USD', ''),
+        'merchant_id' => env('MERCHANT_ID_USD', 0),
+        'password'=> env('MERCHANT_PASSWORD_USD', ''),
+        'merchant_email' => env('MERCHANT_EMAIL_USD', 0),
+        'debug' => env('DEBUG', false),
+        'version' => env('VERSION', 61),
+
+        'operations' => [
+            'new_session' => 'CREATE_CHECKOUT_SESSION',
+            'retrieve_order' => 'RETRIEVE_ORDER',
+        ]
+    ],
+
     'KWD' => [
         'certificate_verify_peer' => env('CERTIFICATE_VERIFY_PEER', false),
         'certificate_verify_host' => env('CERTIFICATE_VERIFY_HOST', 0),
