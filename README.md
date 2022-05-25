@@ -1,10 +1,8 @@
-# Laravel Responsible 
+# Laravel Payment Gateway
 
-[![Latest Stable Version](https://poser.pugx.org/arandilopez/laravel-profane/v/stable)](https://packagist.org/)
-[![Total Downloads](https://poser.pugx.org/arandilopez/laravel-profane/downloads)](https://packagist.org/)
-[![License](https://poser.pugx.org/arandilopez/laravel-profane/license)](https://packagist.org/)
+[![Latest Stable Version](http://poser.pugx.org/yousef/payment-gateway/v)](https://packagist.org/packages/yousef/payment-gateway) [![Total Downloads](http://poser.pugx.org/yousef/payment-gateway/downloads)](https://packagist.org/packages/yousef/payment-gateway) [![Latest Unstable Version](http://poser.pugx.org/yousef/payment-gateway/v/unstable)](https://packagist.org/packages/yousef/payment-gateway) [![License](http://poser.pugx.org/yousef/payment-gateway/license)](https://packagist.org/packages/yousef/payment-gateway) [![PHP Version Require](http://poser.pugx.org/yousef/payment-gateway/require/php)](https://packagist.org/packages/yousef/payment-gateway)
 
-We made this package to decouple response object 
+We made this package to decouple response object
 
 ## Installation
 
@@ -24,7 +22,7 @@ return [
     // ...
     
     'providers' => [
-        Yousef\Responsible\App\Providers\ResponseAbstractFactoryServiceProviders::class,
+        Yousef\PaymentGateway\PaymentGatewayServiceProvider::class,
         
     ];
 
@@ -32,7 +30,7 @@ return [
 ];
 ```
 
-Publish vendor lang files if you need to replace by your own.
+Publish vendor config files if you need to replace by your own.
 
 ```shell
 php artisan vendor:publish
@@ -40,28 +38,73 @@ php artisan vendor:publish
 
 ## Usage
 
-Let's say you need create API for mobile application, already you have
-web application, the response shall be via view helper function  or 
-View facade class.
-now using responsible package just you can use this method.
-import Response object as service container.
+Let's say you need use master, visa to pay orders online in your store, now using Payment Gateway package every thing is easy
+to integrate more readability and Testability. Payment Gateway package support multi currency like [KWD, AED, BHD, QAR, JOD]
+and anyone can add easy to modify.
 
 ```php
 <?php
 
-    protected Response $response;
-
-    public function __construct(Response $response) {
+    Payment::createSession($amount, $transactionId, $currency);
     
-        $this->response = $response;    
-    }
+    Payment::pay($transactionId);
     
-    public function index() {
-        
-        $countries = [];
-        return $this->response->render(compact('countries'), 'index');
-    }
 
+```
+Add, modify currency configuration multi-currency-gateway.php
+
+```php
+return [
+    ...,
+    'KWD' => [
+        'certificate_verify_peer' => env('CERTIFICATE_VERIFY_PEER', false),
+        'certificate_verify_host' => env('CERTIFICATE_VERIFY_HOST', 0),
+        'gateway_url' => env('GATEWAY_URL', ''),
+        'username'=> env('MERCHANT_USERNAME_KWD', ''),
+        'merchant_id' => env('MERCHANT_ID_KWD', 0),
+        'password'=> env('MERCHANT_PASSWORD_KWD', ''),
+        'merchant_email' => env('MERCHANT_EMAIL_KWD', 0),
+        'debug' => env('DEBUG', false),
+        'version' => env('VERSION', 61),
+
+        'operations' => [
+            'new_session' => 'CREATE_CHECKOUT_SESSION',
+            'retrieve_order' => 'RETRIEVE_ORDER',
+        ]
+    ],
+```
+Custom exception classes
+
+```php 
+    NotCaptured::class
+    InvalidAmount::class  
+    InvalidTransactionId::class
+```
+Add own configuration in .env file the DEFAULT_CURRENCY is USD
+
+```php
+VERSION=""
+GATEWAY_URL=""
+MERCHANT_EMAIL=""
+MERCHANT_USERNAME=""
+MERCHANT_PASSWORD=""
+
+// Multi currency
+MERCHANT_EMAIL_KWD=""
+MERCHANT_USERNAME_KWD=""
+MERCHANT_PASSWORD_KWD=""
+
+DEFAULT_CURRENCY=""
+```
+## Getting Help
+
+If you're stuck getting something to work, or need to report a bug, please [post an issue in the Github Issues for this project](https://github.com/yousefdev20/laravel-payment-gateway/issues).
+## Contributing
+
+If you're interesting in contributing code to this project, clone it by running:
+
+```shell
+git clone git@github.com:yousefdev20/laravel-payment-gateway.git
 ```
 
 ## License
