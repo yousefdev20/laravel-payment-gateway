@@ -83,6 +83,7 @@ Custom exception classes
 Add own configuration in .env file the DEFAULT_CURRENCY is USD
 
 ```php
+
 VERSION=""
 GATEWAY_URL=""
 
