@@ -103,4 +103,6 @@ return [
             'retrieve_order' => 'RETRIEVE_ORDER',
         ]
     ],
+
+    'default_currency' => env('DEFAULT_CURRENCY', 'USD')
 ];
