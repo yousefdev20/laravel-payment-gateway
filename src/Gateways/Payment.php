@@ -5,6 +5,7 @@ namespace Yousef\PaymentGateway\Gateways;
 use Yousef\PaymentGateway\Exceptions\InvalidAmount;
 use Yousef\PaymentGateway\Exceptions\CurrencyNotFound;
 use Yousef\PaymentGateway\Exceptions\InvalidTransactionId;
+use Yousef\PaymentGateway\Models\Transaction;
 
 class Payment implements PaymentInterface
 {
@@ -63,7 +64,14 @@ class Payment implements PaymentInterface
 
         $request = $this->requestHandler($payload);
 
-        return $this->responseHandler(curl_exec($request));
+        $response = $this->responseHandler(curl_exec($request));
+
+        Transaction::query()->insert([
+            'order_id' => $orderId, 'amount' => $amount, 'currency' => $currency, 'action' => 'CREATE_CHECKOUT_SESSION',
+            'meta' => $response, 'merchant_account' => $payload + ['apiPassword' => 123]
+        ]);
+
+        return $response;
     }
 
     private function responseHandler(string $string): array
