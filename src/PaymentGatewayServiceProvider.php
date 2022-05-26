@@ -24,8 +24,13 @@ class PaymentGatewayServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../config/multi-currency-gateway.php' => config_path('multi-currency-gateway.php'),
-            __DIR__.'/../database/migrations/create_transactions_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_transaction_table.php')
         ]);
+
+        if (!class_exists('CreateTransactionsTable')) {
+            $this->publishes([
+                __DIR__.'/../database/migrations/create_transactions_table.php' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_transaction_table.php')
+            ]);
+        }
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
