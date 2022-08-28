@@ -2,14 +2,14 @@
 
 [![Latest Stable Version](http://poser.pugx.org/yousef/payment-gateway/v)](https://packagist.org/packages/yousef/payment-gateway) [![Total Downloads](http://poser.pugx.org/yousef/payment-gateway/downloads)](https://packagist.org/packages/yousef/payment-gateway) [![Latest Unstable Version](http://poser.pugx.org/yousef/payment-gateway/v/unstable)](https://packagist.org/packages/yousef/payment-gateway) [![License](http://poser.pugx.org/yousef/payment-gateway/license)](https://packagist.org/packages/yousef/payment-gateway) [![PHP Version Require](http://poser.pugx.org/yousef/payment-gateway/require/php)](https://packagist.org/packages/yousef/payment-gateway)
 
-We made this package to decouple response object
+This package makes everything is simple, Payment method supported (Visa, MasterCard)
 
 ## Installation
 
 Install via composer
 
 ```shell
-composer require yousef/PaymentGateway
+composer require yousef/payment-gateway
 ```
 
 ## Configuration
